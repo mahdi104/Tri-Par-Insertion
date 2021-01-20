@@ -1,0 +1,53 @@
+PROCEDURE saisie(var n:INTEGER)
+VAR
+    set_declarations
+BEGIN
+    REPEAT
+       Write("Donner La Taille Du Tableau"); 
+       Read(n);  
+    UNTIL (n>0); 
+END
+
+PROCEDURE Remplir(var Tab: ARRAY_OF INTEGER[50]; n:INTEGER)
+VAR
+    i:INTEGER; 
+BEGIN
+    FOR i FROM 0 TO n-1 STEP step  DO
+        Read(Tab[i]); 
+    END_FOR
+END
+
+PROCEDURE Tri(var Tab : ARRAY_OF INTEGER[50]; n:INTEGER)
+VAR
+    i,pos,temp:INTEGER; 
+BEGIN
+    FOR i FROM 1 TO n STEP 1  DO
+        Temp:=Tab[i]; 
+        pos:=i; 
+        WHILE ((Tab[pos-1]>temp) and (pos>1) ) DO
+            Tab[pos]:=Tab[pos-1]; 
+            pos:=pos-1; 
+        END_WHILE
+        Tab[pos]:=temp; 
+    END_FOR
+END
+
+PROCEDURE Affichage(Tab: ARRAY_OF INTEGER[50]; n:INTEGER)
+VAR
+    i:INTEGER; 
+BEGIN
+    FOR i FROM 0 TO n STEP 1 DO
+        Write(Tab[i]); 
+    END_FOR
+END
+
+ALGORITHM algorithm_name
+VAR
+    n:INTEGER; 
+    Tab : ARRAY_OF INTEGER[50];
+BEGIN
+    saisie(n); 
+    Remplir(Tab,n);
+    Tri(Tab,n); 
+    Affichage(Tab,n); 
+END
